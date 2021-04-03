@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
+from file_ops import file_write, file_read
 
-tasks = []
+tasks = file_read('todolist.txt')
 
 layout = [
     [sg.InputText("", size=(40,1), font=('Arial', 18), key='add_item'),
@@ -44,3 +45,5 @@ while True:
         delete_item()
     elif event == 'edit':
         edit_item()
+
+file_write('todolist.txt', tasks)
